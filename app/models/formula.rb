@@ -1,9 +1,13 @@
 class Formula < ApplicationRecord
+  enum state: {open: 0, closed: 1}
+
+  has_many :formula_steps, dependent: :destroy
+  has_many :formula_ingredients, dependent: :destroy
+
+  belongs_to :formula_category, optional: true
+
   has_many_attached :images
   has_many_attached :attachments
-  has_many :formula_steps
-  has_many :formula_ingredients
-  belongs_to :formula_category, optional: true
 
   accepts_nested_attributes_for :formula_steps
   accepts_nested_attributes_for :formula_ingredients
