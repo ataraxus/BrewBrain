@@ -6,7 +6,7 @@ class CreateExecutedSteps < ActiveRecord::Migration[7.0]
       t.timestamp :executed_at
       t.references :user, null: false, foreign_key: true
       t.references :batch, null: false, foreign_key: true
-      t.references :process_step, null: false, foreign_key: true
+      t.references :batch_step, null: false, foreign_key: true
 
       t.timestamps
     end
