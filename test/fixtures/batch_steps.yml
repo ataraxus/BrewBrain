@@ -5,9 +5,11 @@ one:
   description: MyText
   resource: one
   batch: one
+  formula_step: one
 
 two:
   name: MyString
   description: MyText
   resource: two
   batch: two
+  formula_step: two
