@@ -3,11 +3,9 @@
 one:
   ingredient: one
   percentage: MyString
-  decimal: MyString
   formula: one
 
 two:
   ingredient: two
   percentage: MyString
-  decimal: MyString
   formula: two
