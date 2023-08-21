@@ -5,7 +5,7 @@ ActiveAdmin.register Batch do
   filter :finished
   filter :amount
 
-  permit_params :name, :description, :state, :finished, :amount, batch_steps_attributes: [:name, :description]
+  permit_params :name, :description, :state, :finished, :amount, batch_steps_attributes: [:name, :description, :step_number]
 
   form do |f|
     f.inputs do

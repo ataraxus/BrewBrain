@@ -3,6 +3,8 @@ class Formula < ApplicationRecord
   has_many_attached :attachments
   has_many :formula_steps
   has_many :formula_ingredients
+  belongs_to :formula_category, optional: true
+
   accepts_nested_attributes_for :formula_steps
   accepts_nested_attributes_for :formula_ingredients
 
