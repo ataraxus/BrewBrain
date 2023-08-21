@@ -5,5 +5,11 @@ ActiveAdmin.register Batch do
   filter :finished
   filter :amount
 
-  permit_params :name, :description, :state, :finished, :amount
+  permit_params :name, :description, :state, :finished, :amount, :step_number
+
+  sidebar "Batch Details", only: [:show, :edit] do
+    ul do
+      li link_to "Batch Steps", admin_batch_batch_steps_path(resource)
+    end
+  end
 end

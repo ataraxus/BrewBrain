@@ -1,6 +1,7 @@
 class Batch < ApplicationRecord
   has_many_attached :images
   has_many_attached :attachments
+  has_many :batch_steps
 
   def self.ransackable_attributes(auth_object = nil)
     ["amount", "created_at", "description", "finished", "id", "name", "state", "updated_at"]

@@ -1,3 +1,5 @@
 ActiveAdmin.register FormulaStep do
-  permit_params :name, :description, :formula_id
+  belongs_to :formula
+
+  permit_params :name, :description, :formula_id, :step_number
 end

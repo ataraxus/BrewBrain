@@ -56,11 +56,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_083502) do
   create_table "batch_steps", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.integer "step_number"
+    t.integer "formula_step_id", null: false
     t.integer "resource_id", null: false
     t.integer "batch_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["batch_id"], name: "index_batch_steps_on_batch_id"
+    t.index ["formula_step_id"], name: "index_batch_steps_on_formula_step_id"
     t.index ["resource_id"], name: "index_batch_steps_on_resource_id"
   end
 
@@ -85,20 +88,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_083502) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "executed_steps", force: :cascade do |t|
-    t.string "name"
-    t.integer "state"
-    t.datetime "executed_at"
-    t.integer "user_id", null: false
-    t.integer "batch_id", null: false
-    t.integer "batch_step_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["batch_id"], name: "index_executed_steps_on_batch_id"
-    t.index ["batch_step_id"], name: "index_executed_steps_on_batch_step_id"
-    t.index ["user_id"], name: "index_executed_steps_on_user_id"
-  end
-
   create_table "formula_categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -107,6 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_083502) do
   end
 
   create_table "formula_ingredients", force: :cascade do |t|
+    t.integer "index"
     t.integer "ingredient_id", null: false
     t.decimal "percentage", precision: 6, scale: 4
     t.integer "formula_id", null: false
@@ -119,6 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_083502) do
   create_table "formula_steps", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.integer "step_number"
     t.integer "formula_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -129,8 +120,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_083502) do
     t.string "name"
     t.text "description"
     t.integer "state"
+    t.integer "formula_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["formula_category_id"], name: "index_formulas_on_formula_category_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -162,13 +155,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_083502) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "batch_steps", "batches"
+  add_foreign_key "batch_steps", "formula_steps"
   add_foreign_key "batch_steps", "resources"
   add_foreign_key "comments", "users"
-  add_foreign_key "executed_steps", "batch_steps"
-  add_foreign_key "executed_steps", "batches"
-  add_foreign_key "executed_steps", "users"
   add_foreign_key "formula_ingredients", "formulas"
   add_foreign_key "formula_ingredients", "ingredients"
   add_foreign_key "formula_steps", "formulas"
+  add_foreign_key "formulas", "formula_categories"
   add_foreign_key "resources", "ingredients"
 end

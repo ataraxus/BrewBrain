@@ -3,6 +3,7 @@ class CreateFormulaSteps < ActiveRecord::Migration[7.0]
     create_table :formula_steps do |t|
       t.string :name
       t.text :description
+      t.integer :step_number
       t.references :formula, null: false, foreign_key: true
 
       t.timestamps

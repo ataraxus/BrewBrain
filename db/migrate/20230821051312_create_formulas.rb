@@ -4,6 +4,7 @@ class CreateFormulas < ActiveRecord::Migration[7.0]
       t.string :name
       t.text :description
       t.integer :state
+      t.references :formula_category, null: true, foreign_key: true
 
       t.timestamps
     end
