@@ -1,7 +1,8 @@
 ## Setup development on MacOS
 
 ```
-brew install rbenv
+# ubuntu: sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-dev libpq-dev
+brew install rbenv # ubuntu: curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
 rbenv install 3.2.0
 brew install postgresql
 bundle install
