@@ -1,4 +1,6 @@
 ActiveAdmin.register Comment do
+  menu false
+
   filter :user_id
   filter :text
   filter :reference_type

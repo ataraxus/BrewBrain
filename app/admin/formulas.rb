@@ -1,4 +1,6 @@
 ActiveAdmin.register Formula do
+  menu priority: 6
+
   filter :name
   filter :description
   filter :state

@@ -28,6 +28,9 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 # Unconfigurable formatter and linter
 gem "standard", group: [:development, :test]
+# Track changes to your models, for auditing or versioning.
+gem 'paper_trail'
+
 
 gem "activeadmin"
 

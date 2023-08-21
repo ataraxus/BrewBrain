@@ -1,4 +1,6 @@
 ActiveAdmin.register Batch do
+  menu priority: 7
+
   filter :name
   filter :description
   filter :state

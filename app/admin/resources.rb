@@ -1,4 +1,6 @@
 ActiveAdmin.register Resource do
+  menu priority: 4
+
   filter :name
   filter :state
   filter :description

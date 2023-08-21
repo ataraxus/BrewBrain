@@ -1,0 +1,38 @@
+en:
+  attributes:
+    id: ID
+    name: Name
+    description: Description
+  activerecord:
+    models:
+      batch_step: 
+        one: Batch Step
+        other: Batch Steps
+      batch: 
+        one: Batch
+        other: Batches
+      comment: 
+        one: Comment
+        other: Comments
+      formula_category: 
+        one: Formula Category
+        other: Formula Categories
+      formula_ingredient: 
+        one: Formula Ingredient
+        other: Formula Ingredients
+      formula_step:
+        one: Formula Step
+        other: Formula Steps
+      formula:
+        one: Formula
+        other: Formulas
+      ingredient:
+        one: Ingredient
+        other: Ingredients
+      resource:
+        one: Resource
+        other: Resources
+      user:
+        one: User
+        other: Users
+    attributes:
