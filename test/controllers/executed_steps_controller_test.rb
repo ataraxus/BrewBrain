@@ -17,7 +17,7 @@ class ExecutedStepsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create executed_step" do
     assert_difference("ExecutedStep.count") do
-      post executed_steps_url, params: { executed_step: { batch_id: @executed_step.batch_id, executed_at: @executed_step.executed_at, name: @executed_step.name, process_step_id: @executed_step.process_step_id, state: @executed_step.state, user_id: @executed_step.user_id } }
+      post executed_steps_url, params: {executed_step: {batch_id: @executed_step.batch_id, executed_at: @executed_step.executed_at, name: @executed_step.name, process_step_id: @executed_step.process_step_id, state: @executed_step.state, user_id: @executed_step.user_id}}
     end
 
     assert_redirected_to executed_step_url(ExecutedStep.last)
@@ -34,7 +34,7 @@ class ExecutedStepsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update executed_step" do
-    patch executed_step_url(@executed_step), params: { executed_step: { batch_id: @executed_step.batch_id, executed_at: @executed_step.executed_at, name: @executed_step.name, process_step_id: @executed_step.process_step_id, state: @executed_step.state, user_id: @executed_step.user_id } }
+    patch executed_step_url(@executed_step), params: {executed_step: {batch_id: @executed_step.batch_id, executed_at: @executed_step.executed_at, name: @executed_step.name, process_step_id: @executed_step.process_step_id, state: @executed_step.state, user_id: @executed_step.user_id}}
     assert_redirected_to executed_step_url(@executed_step)
   end
 

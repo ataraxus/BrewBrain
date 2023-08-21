@@ -4,6 +4,6 @@ ActiveAdmin.register Batch do
   filter :state
   filter :finished
   filter :amount
-  
+
   permit_params :name, :description, :state, :finished, :amount
 end

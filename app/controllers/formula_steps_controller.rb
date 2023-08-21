@@ -1,5 +1,5 @@
 class FormulaStepsController < ApplicationController
-  before_action :set_formula_step, only: %i[ show edit update destroy ]
+  before_action :set_formula_step, only: %i[show edit update destroy]
 
   # GET /formula_steps or /formula_steps.json
   def index
@@ -58,13 +58,14 @@ class FormulaStepsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_formula_step
-      @formula_step = FormulaStep.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def formula_step_params
-      params.require(:formula_step).permit(:name, :description, :formula_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_formula_step
+    @formula_step = FormulaStep.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def formula_step_params
+    params.require(:formula_step).permit(:name, :description, :formula_id)
+  end
 end

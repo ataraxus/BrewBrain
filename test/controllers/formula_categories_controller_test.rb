@@ -17,7 +17,7 @@ class FormulaCategoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create formula_category" do
     assert_difference("FormulaCategory.count") do
-      post formula_categories_url, params: { formula_category: { description: @formula_category.description, name: @formula_category.name } }
+      post formula_categories_url, params: {formula_category: {description: @formula_category.description, name: @formula_category.name}}
     end
 
     assert_redirected_to formula_category_url(FormulaCategory.last)
@@ -34,7 +34,7 @@ class FormulaCategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update formula_category" do
-    patch formula_category_url(@formula_category), params: { formula_category: { description: @formula_category.description, name: @formula_category.name } }
+    patch formula_category_url(@formula_category), params: {formula_category: {description: @formula_category.description, name: @formula_category.name}}
     assert_redirected_to formula_category_url(@formula_category)
   end
 

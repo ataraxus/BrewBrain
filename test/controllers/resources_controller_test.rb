@@ -17,7 +17,7 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create resource" do
     assert_difference("Resource.count") do
-      post resources_url, params: { resource: { amount_in_kg: @resource.amount_in_kg, description: @resource.description, ingredient_id: @resource.ingredient_id, lot_number: @resource.lot_number, name: @resource.name, state: @resource.state } }
+      post resources_url, params: {resource: {amount_in_kg: @resource.amount_in_kg, description: @resource.description, ingredient_id: @resource.ingredient_id, lot_number: @resource.lot_number, name: @resource.name, state: @resource.state}}
     end
 
     assert_redirected_to resource_url(Resource.last)
@@ -34,7 +34,7 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update resource" do
-    patch resource_url(@resource), params: { resource: { amount_in_kg: @resource.amount_in_kg, description: @resource.description, ingredient_id: @resource.ingredient_id, lot_number: @resource.lot_number, name: @resource.name, state: @resource.state } }
+    patch resource_url(@resource), params: {resource: {amount_in_kg: @resource.amount_in_kg, description: @resource.description, ingredient_id: @resource.ingredient_id, lot_number: @resource.lot_number, name: @resource.name, state: @resource.state}}
     assert_redirected_to resource_url(@resource)
   end
 

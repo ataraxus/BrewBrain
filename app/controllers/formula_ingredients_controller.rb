@@ -1,5 +1,5 @@
 class FormulaIngredientsController < ApplicationController
-  before_action :set_formula_ingredient, only: %i[ show edit update destroy ]
+  before_action :set_formula_ingredient, only: %i[show edit update destroy]
 
   # GET /formula_ingredients or /formula_ingredients.json
   def index
@@ -58,13 +58,14 @@ class FormulaIngredientsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_formula_ingredient
-      @formula_ingredient = FormulaIngredient.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def formula_ingredient_params
-      params.require(:formula_ingredient).permit(:ingredient_id, :percentage, :decimal, :formula_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_formula_ingredient
+    @formula_ingredient = FormulaIngredient.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def formula_ingredient_params
+    params.require(:formula_ingredient).permit(:ingredient_id, :percentage, :decimal, :formula_id)
+  end
 end

@@ -17,7 +17,7 @@ class FormulaIngredientsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create formula_ingredient" do
     assert_difference("FormulaIngredient.count") do
-      post formula_ingredients_url, params: { formula_ingredient: { decimal: @formula_ingredient.decimal, formula_id: @formula_ingredient.formula_id, ingredient_id: @formula_ingredient.ingredient_id, percentage: @formula_ingredient.percentage } }
+      post formula_ingredients_url, params: {formula_ingredient: {decimal: @formula_ingredient.decimal, formula_id: @formula_ingredient.formula_id, ingredient_id: @formula_ingredient.ingredient_id, percentage: @formula_ingredient.percentage}}
     end
 
     assert_redirected_to formula_ingredient_url(FormulaIngredient.last)
@@ -34,7 +34,7 @@ class FormulaIngredientsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update formula_ingredient" do
-    patch formula_ingredient_url(@formula_ingredient), params: { formula_ingredient: { decimal: @formula_ingredient.decimal, formula_id: @formula_ingredient.formula_id, ingredient_id: @formula_ingredient.ingredient_id, percentage: @formula_ingredient.percentage } }
+    patch formula_ingredient_url(@formula_ingredient), params: {formula_ingredient: {decimal: @formula_ingredient.decimal, formula_id: @formula_ingredient.formula_id, ingredient_id: @formula_ingredient.ingredient_id, percentage: @formula_ingredient.percentage}}
     assert_redirected_to formula_ingredient_url(@formula_ingredient)
   end
 

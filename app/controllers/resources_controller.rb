@@ -1,5 +1,5 @@
 class ResourcesController < ApplicationController
-  before_action :set_resource, only: %i[ show edit update destroy ]
+  before_action :set_resource, only: %i[show edit update destroy]
 
   # GET /resources or /resources.json
   def index
@@ -58,13 +58,14 @@ class ResourcesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_resource
-      @resource = Resource.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def resource_params
-      params.require(:resource).permit(:name, :state, :description, :lot_number, :amount_in_kg, :ingredient_id, attachments: [], images: [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_resource
+    @resource = Resource.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def resource_params
+    params.require(:resource).permit(:name, :state, :description, :lot_number, :amount_in_kg, :ingredient_id, attachments: [], images: [])
+  end
 end

@@ -1,5 +1,5 @@
 class FormulaCategoriesController < ApplicationController
-  before_action :set_formula_category, only: %i[ show edit update destroy ]
+  before_action :set_formula_category, only: %i[show edit update destroy]
 
   # GET /formula_categories or /formula_categories.json
   def index
@@ -58,13 +58,14 @@ class FormulaCategoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_formula_category
-      @formula_category = FormulaCategory.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def formula_category_params
-      params.require(:formula_category).permit(:name, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_formula_category
+    @formula_category = FormulaCategory.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def formula_category_params
+    params.require(:formula_category).permit(:name, :description)
+  end
 end

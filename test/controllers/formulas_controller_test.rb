@@ -17,7 +17,7 @@ class FormulasControllerTest < ActionDispatch::IntegrationTest
 
   test "should create formula" do
     assert_difference("Formula.count") do
-      post formulas_url, params: { formula: { description: @formula.description, name: @formula.name, state: @formula.state } }
+      post formulas_url, params: {formula: {description: @formula.description, name: @formula.name, state: @formula.state}}
     end
 
     assert_redirected_to formula_url(Formula.last)
@@ -34,7 +34,7 @@ class FormulasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update formula" do
-    patch formula_url(@formula), params: { formula: { description: @formula.description, name: @formula.name, state: @formula.state } }
+    patch formula_url(@formula), params: {formula: {description: @formula.description, name: @formula.name, state: @formula.state}}
     assert_redirected_to formula_url(@formula)
   end
 

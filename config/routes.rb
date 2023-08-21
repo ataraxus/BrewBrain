@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root "home#index"
-  get 'home/index'
+  get "home/index"
   resources :batch_steps
   resources :resources
   resources :executed_steps

@@ -1,5 +1,5 @@
 class ExecutedStepsController < ApplicationController
-  before_action :set_executed_step, only: %i[ show edit update destroy ]
+  before_action :set_executed_step, only: %i[show edit update destroy]
 
   # GET /executed_steps or /executed_steps.json
   def index
@@ -58,13 +58,14 @@ class ExecutedStepsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_executed_step
-      @executed_step = ExecutedStep.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def executed_step_params
-      params.require(:executed_step).permit(:name, :state, :executed_at, :user_id, :batch_id, :process_step_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_executed_step
+    @executed_step = ExecutedStep.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def executed_step_params
+    params.require(:executed_step).permit(:name, :state, :executed_at, :user_id, :batch_id, :process_step_id)
+  end
 end
