@@ -5,7 +5,24 @@ ActiveAdmin.register Batch do
   filter :finished
   filter :amount
 
-  permit_params :name, :description, :state, :finished, :amount, :step_number
+  permit_params :name, :description, :state, :finished, :amount, batch_steps_attributes: [:name, :description]
+
+  form do |f|
+    f.inputs do
+      f.input :name
+      f.input :description
+      f.input :state
+      f.input :finished
+      f.input :amount
+    end
+    f.inputs do
+      f.has_many :batch_steps, sortable: :step_number, sortable_start: 1 do |t|
+        t.input :name
+        t.input :description
+      end
+    end
+    f.actions
+  end
 
   sidebar "Batch Details", only: [:show, :edit] do
     ul do
