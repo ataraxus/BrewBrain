@@ -9,7 +9,8 @@ ActiveAdmin.register Formula do
   permit_params :name, :description, :state, :formula_category_id,
     formula_steps_attributes: [:name, :description, :step_number],
     formula_ingredients_attributes: [:percentage, :ingredient_id, :index],
-    images: []
+    images: [],
+    attachments: []
 
   show do
     attributes_table do
@@ -24,6 +25,16 @@ ActiveAdmin.register Formula do
           formula.images.each do |img|
             div do
               image_tag url_for(img), size: "200x200"
+            end
+          end
+        end
+      end
+
+      row :attachments do
+        div do
+          formula.attachments.each do |attachment|
+            div do
+              link_to attachment.filename, url_for(attachment) 
             end
           end
         end
