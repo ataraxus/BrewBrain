@@ -34,3 +34,6 @@
 !/app/assets/builds/.keep
 
 .idea
+
+db/development.sqlite3
+db/test.sqlite3

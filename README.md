@@ -10,6 +10,7 @@ bundle install
 ## Start development
 
 ```
+bin/rails db:migrate
 bin/dev
 ```
 
@@ -27,6 +28,7 @@ bin/rails generate scaffold Comment user:references text:text reference:referenc
 bin/rails generate scaffold ExecutedStep name:string state:integer executed_at:timestamp user:references batch:references process_step:references
 bin/rails generate scaffold Resource name:string state:integer description:text lot_number:string amount_in_kg:decimal{7.3} attachments:attachments images:attachments ingredient:references
 bin/rails generate scaffold BatchStep name:string description:text resource:references batch:references
+bin/rails active_storage:install
 ```
 
 
