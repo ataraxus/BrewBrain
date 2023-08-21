@@ -1,4 +1,4 @@
-json.extract! ingredient, :id, :name, :description, :type, :images, :attachments, :created_at, :updated_at
+json.extract! ingredient, :id, :name, :description, :ingredient_type, :images, :attachments, :created_at, :updated_at
 json.url ingredient_url(ingredient, format: :json)
 json.images do
   json.array!(ingredient.images) do |image|
