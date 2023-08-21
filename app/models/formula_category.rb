@@ -1,0 +1,2 @@
+class FormulaCategory < ApplicationRecord
+end
