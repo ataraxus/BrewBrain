@@ -1,5 +1,5 @@
 class Batch < ApplicationRecord
-  enum state: {open: 0, closed: 1}
+  enum state: {planned: 0, in_progress: 1, incubating: 2, bottled: 3}
 
   has_many :batch_steps, dependent: :destroy
 

@@ -1,5 +1,5 @@
 class Formula < ApplicationRecord
-  enum state: {open: 0, closed: 1}
+  enum state: {planned: 0, in_progress: 1, closed: 3, production: 4}
 
   has_many :formula_steps, dependent: :destroy
   has_many :formula_ingredients, dependent: :destroy

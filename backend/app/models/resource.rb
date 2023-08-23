@@ -1,5 +1,5 @@
 class Resource < ApplicationRecord
-  enum state: {open: 0, closed: 1}
+  enum state: {closed: 0, open: 1, consumed: 2}
 
   belongs_to :ingredient
   has_many_attached :attachments
