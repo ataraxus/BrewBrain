@@ -9,8 +9,8 @@ class Formula < ApplicationRecord
   has_many_attached :images
   has_many_attached :attachments
 
-  accepts_nested_attributes_for :formula_steps
-  accepts_nested_attributes_for :formula_ingredients
+  accepts_nested_attributes_for :formula_steps, allow_destroy: true
+  accepts_nested_attributes_for :formula_ingredients, allow_destroy: true
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "description", "id", "name", "state", "updated_at", "formula_category_id"]

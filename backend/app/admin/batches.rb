@@ -8,7 +8,7 @@ ActiveAdmin.register Batch do
   filter :amount
 
   permit_params :name, :description, :state, :finished, :amount,
-    batch_steps_attributes: [:name, :description, :step_number, :formula_step_id, :resource_id],
+    batch_steps_attributes: [:id, :name, :description, :step_number, :formula_step_id, :resource_id, :_destroy],
     images: [],
     attachments: []
 
@@ -91,7 +91,7 @@ ActiveAdmin.register Batch do
       f.input :amount
     end
     f.inputs do
-      f.has_many :batch_steps, sortable: :step_number, sortable_start: 1 do |t|
+      f.has_many :batch_steps, sortable: :step_number, sortable_start: 1, allow_destroy: true do |t|
         t.input :name
         t.input :description
         t.input :formula_step

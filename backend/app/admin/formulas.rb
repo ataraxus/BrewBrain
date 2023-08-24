@@ -7,8 +7,8 @@ ActiveAdmin.register Formula do
   filter :formula_category
 
   permit_params :name, :description, :state, :formula_category_id,
-    formula_steps_attributes: [:name, :description, :step_number],
-    formula_ingredients_attributes: [:percentage, :ingredient_id, :index],
+    formula_steps_attributes: [:id, :name, :description, :step_number, :_destroy],
+    formula_ingredients_attributes: [:id, :percentage, :ingredient_id, :index, :_destroy],
     images: [],
     attachments: []
 
@@ -92,13 +92,13 @@ ActiveAdmin.register Formula do
       f.input :formula_category
     end
     f.inputs do
-      f.has_many :formula_steps, sortable: :step_number, sortable_start: 1 do |t|
+      f.has_many :formula_steps, sortable: :step_number, sortable_start: 1, allow_destroy: true do |t|
         t.input :name
         t.input :description
       end
     end
     f.inputs do
-      f.has_many :formula_ingredients, sortable: :index, sortable_start: 1 do |t|
+      f.has_many :formula_ingredients, sortable: :index, sortable_start: 1, allow_destroy: true do |t|
         t.input :percentage
         t.input :ingredient
       end

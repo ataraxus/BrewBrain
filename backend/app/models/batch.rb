@@ -3,7 +3,7 @@ class Batch < ApplicationRecord
 
   has_many :batch_steps, dependent: :destroy
 
-  accepts_nested_attributes_for :batch_steps
+  accepts_nested_attributes_for :batch_steps, allow_destroy: true
 
   has_many_attached :images
   has_many_attached :attachments
