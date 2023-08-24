@@ -1,3 +1,28 @@
+## Setup VS Code
+
+Install recommended VS Code plugins (`.vscode/extensions.json`).
+
+Add the following code snippet to `settings.json`.
+
+```
+  "[ruby]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rebornix.ruby"
+  },
+  "ruby.useLanguageServer": true,
+  "ruby.format": "standard",
+  "ruby.lint": {
+    "standard": true
+  },
+  "files.associations": {
+    "*.erb": "erb"
+  },
+  "[erb]": {
+    "editor.defaultFormatter": "manuelpuyol.erb-linter",
+    "editor.formatOnSave": true
+  }
+```
+
 ## Setup development on MacOS
 
 ```
