@@ -30,6 +30,7 @@ gem "sassc-rails"
 gem 'paper_trail'
 
 gem "activeadmin"
+gem 'assignable_values'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

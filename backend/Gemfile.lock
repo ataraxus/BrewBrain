@@ -80,6 +80,8 @@ GEM
     arbre (1.6.0)
       activesupport (>= 3.0.0, < 7.1)
       ruby2_keywords (>= 0.0.2, < 1.0)
+    assignable_values (0.18.0)
+      activerecord (>= 2.3)
     ast (2.4.2)
     base64 (0.1.1)
     better_html (2.0.2)
@@ -186,6 +188,8 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.4-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.4-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     paper_trail (15.0.0)
@@ -289,6 +293,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.6.3-arm64-darwin)
+    sqlite3 (1.6.3-x86_64-darwin)
     sqlite3 (1.6.3-x86_64-linux)
     standard (1.31.0)
       language_server-protocol (~> 3.17.0.2)
@@ -305,6 +310,8 @@ GEM
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.30-arm64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.30-x86_64-darwin)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.30-x86_64-linux)
       railties (>= 6.0.0)
@@ -337,10 +344,12 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
   activeadmin
+  assignable_values
   bootsnap
   capybara
   debug

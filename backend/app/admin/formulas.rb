@@ -88,7 +88,7 @@ ActiveAdmin.register Formula do
     f.inputs do
       f.input :name
       f.input :description
-      f.input :state
+      f.input :state, collection: f.object.humanized_assignable_states.map { |s| [s.humanized, s.value] }
       f.input :formula_category
     end
     f.inputs do

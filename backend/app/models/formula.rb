@@ -12,6 +12,17 @@ class Formula < ApplicationRecord
   accepts_nested_attributes_for :formula_steps, allow_destroy: true
   accepts_nested_attributes_for :formula_ingredients, allow_destroy: true
 
+  assignable_values_for :state do
+    states = Formula.states.keys
+    case state_was
+    when "planned"
+      states = ["planned", "in_progress"]
+    when "in_progress"
+      states = ["planned", "in_progress"]
+    end
+    states
+  end
+
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "description", "id", "name", "state", "updated_at", "formula_category_id"]
   end
