@@ -8,12 +8,12 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel I18n.t("dashboard.overview") do
           table_for [
-            [User, admin_users_path],
-            [Ingredient, admin_ingredients_path],
-            [Resource, admin_resources_path],
-            [FormulaCategory, admin_formula_categories_path],
-            [Formula, admin_formulas_path],
-            [Batch, admin_batches_path]
+            [User, users_path],
+            [Ingredient, ingredients_path],
+            [Resource, resources_path],
+            [FormulaCategory, formula_categories_path],
+            [Formula, formulas_path],
+            [Batch, batches_path]
           ] do
             column(I18n.t("dashboard.name")) { |resource, link| link_to resource.model_name.human(count: resource.count).titleize, link }
             column(I18n.t("dashboard.count")) { |resource, link| resource.count }

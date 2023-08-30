@@ -35,7 +35,7 @@ ActiveAdmin.register Ingredient do
                 link_to attachment.filename, url_for(attachment)
               end
               span do
-                link_to "Delete", delete_attachment_admin_ingredient_path(attachment_id: attachment.id), data: {confirm: "Are you sure?"}
+                link_to "Delete", delete_attachment_ingredient_path(attachment_id: attachment.id), data: {confirm: "Are you sure?"}
               end
             end
           end
@@ -44,7 +44,7 @@ ActiveAdmin.register Ingredient do
     end
 
     div do
-      active_admin_form_for [:admin, resource], url: attach_image_admin_ingredient_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
+      active_admin_form_for [:admin, resource], url: attach_image_ingredient_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
         f.semantic_errors
         f.inputs "Attach Images" do
           f.input :images, as: :file, input_html: {multiple: true}
@@ -54,7 +54,7 @@ ActiveAdmin.register Ingredient do
     end
 
     div do
-      active_admin_form_for [:admin, resource], url: attach_attachment_admin_ingredient_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
+      active_admin_form_for [:admin, resource], url: attach_attachment_ingredient_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
         f.semantic_errors
         f.inputs "Attach Attachment" do
           f.input :attachments, as: :file, input_html: {multiple: true}

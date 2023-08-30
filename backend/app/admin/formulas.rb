@@ -28,7 +28,7 @@ ActiveAdmin.register Formula do
               image_tag url_for(img), size: "200x200"
             end
             div do
-              link_to "Delete", delete_attachment_admin_formula_path(attachment_id: img.id), data: {confirm: "Are you sure?"}
+              link_to "Delete", delete_attachment_formula_path(attachment_id: img.id), data: {confirm: "Are you sure?"}
             end
           end
         end
@@ -42,7 +42,7 @@ ActiveAdmin.register Formula do
                 link_to attachment.filename, url_for(attachment)
               end
               span do
-                link_to "Delete", delete_attachment_admin_formula_path(attachment_id: attachment.id), data: {confirm: "Are you sure?"}
+                link_to "Delete", delete_attachment_formula_path(attachment_id: attachment.id), data: {confirm: "Are you sure?"}
               end
             end
           end
@@ -51,7 +51,7 @@ ActiveAdmin.register Formula do
     end
 
     div do
-      active_admin_form_for [:admin, resource], url: attach_image_admin_formula_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
+      active_admin_form_for [:admin, resource], url: attach_image_formula_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
         f.semantic_errors
         f.inputs "Attach Images" do
           f.input :images, as: :file, input_html: {multiple: true}
@@ -61,7 +61,7 @@ ActiveAdmin.register Formula do
     end
 
     div do
-      active_admin_form_for [:admin, resource], url: attach_attachment_admin_formula_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
+      active_admin_form_for [:admin, resource], url: attach_attachment_formula_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
         f.semantic_errors
         f.inputs "Attach Attachment" do
           f.input :attachments, as: :file, input_html: {multiple: true}
@@ -142,7 +142,7 @@ ActiveAdmin.register Formula do
     end
 
     if batch.save
-      redirect_to admin_batch_path(batch)
+      redirect_to batch_path(batch)
     else
       logger.error "Error creating batch! #{batch.errors.inspect}"
     end
@@ -150,8 +150,8 @@ ActiveAdmin.register Formula do
 
   sidebar "Formula Details", only: [:show, :edit] do
     ul do
-      li link_to "Formula Steps", admin_formula_formula_steps_path(resource)
-      li link_to "Formula Ingredients", admin_formula_formula_ingredients_path(resource)
+      li link_to "Formula Steps", formula_formula_steps_path(resource)
+      li link_to "Formula Ingredients", formula_formula_ingredients_path(resource)
     end
   end
 

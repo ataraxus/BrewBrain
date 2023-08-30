@@ -29,7 +29,7 @@ ActiveAdmin.register Resource do
               image_tag url_for(img), size: "200x200"
             end
             div do
-              link_to "Delete", delete_attachment_admin_resource_path(attachment_id: img.id), data: {confirm: "Are you sure?"}
+              link_to "Delete", delete_attachment_resource_path(attachment_id: img.id), data: {confirm: "Are you sure?"}
             end
           end
         end
@@ -43,7 +43,7 @@ ActiveAdmin.register Resource do
                 link_to attachment.filename, url_for(attachment)
               end
               span do
-                link_to "Delete", delete_attachment_admin_resource_path(attachment_id: attachment.id), data: {confirm: "Are you sure?"}
+                link_to "Delete", delete_attachment_resource_path(attachment_id: attachment.id), data: {confirm: "Are you sure?"}
               end
             end
           end
@@ -52,7 +52,7 @@ ActiveAdmin.register Resource do
     end
 
     div do
-      active_admin_form_for [:admin, resource], url: attach_image_admin_resource_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
+      active_admin_form_for [:admin, resource], url: attach_image_resource_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
         f.semantic_errors
         f.inputs "Attach Images" do
           f.input :images, as: :file, input_html: {multiple: true}
@@ -62,7 +62,7 @@ ActiveAdmin.register Resource do
     end
 
     div do
-      active_admin_form_for [:admin, resource], url: attach_attachment_admin_resource_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
+      active_admin_form_for [:admin, resource], url: attach_attachment_resource_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
         f.semantic_errors
         f.inputs "Attach Attachment" do
           f.input :attachments, as: :file, input_html: {multiple: true}
