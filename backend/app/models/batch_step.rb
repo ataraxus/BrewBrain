@@ -1,5 +1,5 @@
 class BatchStep < ApplicationRecord
-  belongs_to :resource
+  belongs_to :resource, optional: true
   belongs_to :batch
   belongs_to :formula_step
 

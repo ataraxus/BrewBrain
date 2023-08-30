@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_142323) do
     t.integer "step_number"
     t.integer "formula_step_id", null: false
     t.integer "resource_id", null: false
-    t.integer "batch_id", null: false
+    t.integer "batch_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["batch_id"], name: "index_batch_steps_on_batch_id"

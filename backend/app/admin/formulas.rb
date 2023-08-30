@@ -129,10 +129,35 @@ ActiveAdmin.register Formula do
     redirect_to [:admin, resource], notice: "Attachment deleted!"
   end
 
+  member_action :create_batch, method: :post do
+    batch = Batch.new
+    batch.name = resource.name
+    batch.state = :planned
+    batch.description = params[:amount]
+    resource.formula_steps.each do |formula_step|
+      step = batch.batch_steps.build
+      step.name = formula_step.name
+      step.formula_step = formula_step
+      step.resource = Resource.first
+    end
+
+    if batch.save
+      redirect_to admin_batch_path(batch)
+    else
+      logger.error "Error creating batch! #{batch.errors.inspect}"
+    end
+  end
+
   sidebar "Formula Details", only: [:show, :edit] do
     ul do
       li link_to "Formula Steps", admin_formula_formula_steps_path(resource)
       li link_to "Formula Ingredients", admin_formula_formula_ingredients_path(resource)
+    end
+  end
+
+  sidebar "Create new Batch", only: [:show] do
+    if resource.state == "production"
+      render "formulas/create_new_batch_form", resource: resource
     end
   end
 end

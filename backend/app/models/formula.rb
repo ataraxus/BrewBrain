@@ -16,7 +16,7 @@ class Formula < ApplicationRecord
     states = Formula.states.keys
     case state_was
     when "planned"
-      states = ["planned","closed", "in_progress"]
+      states = ["planned", "closed", "in_progress"]
     when "in_progress"
       states = ["in_progress", "closed", "production"]
     end
