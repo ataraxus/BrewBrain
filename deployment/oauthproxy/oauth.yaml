@@ -1,0 +1,39 @@
+server:
+  BindAddress: 0.0.0.0:8080
+upstreamConfig:
+  upstreams:
+    - id: brewbrain
+      insecureSkipTLSVerify: true
+      uri: http://brewbrain:3000
+      path: /
+
+providers:
+  - provider: keycloak-oidc
+    id: keycloak
+    clientSecret: 2CHqjWzaztwrBbRiqZrGjJZ5rxbgRndg
+    clientID: brewbrain
+    loginURL: http://localhost:8080/auth/realms/brewbrain/protocol/openid-connect/auth
+    redeemURL: http://keycloak:8080/auth/realms/brewbrain/protocol/openid-connect/token
+    profileURL: http://keycloak:8080/auth/realms/brewbrain/protocol/openid-connect/userinfo
+    validateURL: http://keycloak:8080/auth/realms/brewbrain/protocol/openid-connect/userinfo
+    oidcConfig:
+      skipDiscovery: true
+      jwksURL: http://keycloak:8080/auth/realms/brewbrain/protocol/openid-connect/certs
+      issuerURL: http://localhost:8080/auth/realms/brewbrain
+      extraAudiences:
+        - brewbrain
+        - keycloak
+      audienceClaims:
+        - aud
+      emailClaim: email
+      userIDClaim: preferred_username
+    keycloakConfig:
+      roles:
+        - brewbrain:brewbrain-user
+        - brewbrain:brewbrain-admin
+    scope: "openid profile email"
+
+injectRequestHeaders:
+  - name: Remote-User
+    values:
+      - claim: email

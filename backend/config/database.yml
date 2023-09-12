@@ -83,6 +83,7 @@ test:
 #
 production:
   <<: *default
-  database: BrewBrain_production
-  username: BrewBrain
+  url: <%= ENV["BREWBRAIN_DATABASE_URL"] %>
+  database: <%= ENV["BREWBRAIN_DATABASE_SCHEMA"] %>
+  username: <%= ENV["BREWBRAIN_DATABASE_USERNAME"] %>
   password: <%= ENV["BREWBRAIN_DATABASE_PASSWORD"] %>
