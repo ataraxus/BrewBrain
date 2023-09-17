@@ -1,4 +1,4 @@
-class Resource < ApplicationRecord
+class Asset < ApplicationRecord
   enum state: {closed: 0, open: 1, consumed: 2}
 
   belongs_to :ingredient

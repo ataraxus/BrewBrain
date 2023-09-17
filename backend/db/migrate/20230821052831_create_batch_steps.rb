@@ -5,7 +5,7 @@ class CreateBatchSteps < ActiveRecord::Migration[7.0]
       t.text :description
       t.integer :step_number
       t.references :formula_step, null: false, foreign_key: true
-      t.references :resource, null: false, foreign_key: true
+      t.references :asset, null: false, foreign_key: true
       t.references :batch, null: true, foreign_key: true
 
       t.timestamps

@@ -8,7 +8,7 @@ ActiveAdmin.register Batch do
   filter :amount
 
   permit_params :name, :description, :state, :finished, :amount,
-    batch_steps_attributes: [:id, :name, :description, :step_number, :formula_step_id, :resource_id, :_destroy],
+    batch_steps_attributes: [:id, :name, :description, :step_number, :formula_step_id, :asset_id, :_destroy],
     images: [],
     attachments: []
 
@@ -52,7 +52,7 @@ ActiveAdmin.register Batch do
     end
 
     div do
-      active_admin_form_for [:admin, resource], url: attach_image_batch_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
+      active_admin_form_for [:admin, asset], url: attach_image_batch_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
         f.semantic_errors
         f.inputs "Attach Images" do
           f.input :images, as: :file, input_html: {multiple: true}
@@ -62,7 +62,7 @@ ActiveAdmin.register Batch do
     end
 
     div do
-      active_admin_form_for [:admin, resource], url: attach_attachment_batch_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
+      active_admin_form_for [:admin, asset], url: attach_attachment_batch_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
         f.semantic_errors
         f.inputs "Attach Attachment" do
           f.input :attachments, as: :file, input_html: {multiple: true}
@@ -74,7 +74,7 @@ ActiveAdmin.register Batch do
     table_for batch.batch_steps, order_by: :step_number do
       column :name
       column :description
-      column :resource
+      column :asset
       column :formula_step
     end
 
@@ -95,38 +95,38 @@ ActiveAdmin.register Batch do
         t.input :name
         t.input :description
         t.input :formula_step
-        t.input :resource
+        t.input :asset
       end
     end
     f.actions
   end
 
   member_action :attach_image, method: :post do
-    resource.images.attach(params[:batch][:images])
-    if resource.save
-      redirect_to resource_path, notice: "Uploaded Image!"
+    asset.images.attach(params[:batch][:images])
+    if asset.save
+      redirect_to asset_path, notice: "Uploaded Image!"
     else
-      redirect_to resource_path, notice: "Failed to upload!"
+      redirect_to asset_path, notice: "Failed to upload!"
     end
   end
 
   member_action :attach_attachment, method: :post do
-    resource.attachments.attach(params[:batch][:attachments])
-    if resource.save
-      redirect_to resource_path, notice: "Uploaded Attachment!"
+    asset.attachments.attach(params[:batch][:attachments])
+    if asset.save
+      redirect_to asset_path, notice: "Uploaded Attachment!"
     else
-      redirect_to resource_path, notice: "Failed to upload!"
+      redirect_to asset_path, notice: "Failed to upload!"
     end
   end
 
   member_action :delete_attachment do
     ActiveStorage::Attachment.find(params[:attachment_id]).purge_later
-    redirect_to [:admin, resource], notice: "Attachment deleted!"
+    redirect_to [:admin, asset], notice: "Attachment deleted!"
   end
 
   sidebar "Batch Details", only: [:show, :edit] do
     ul do
-      li link_to "Batch Steps", batch_batch_steps_path(resource)
+      li link_to "Batch Steps", batch_batch_steps_path(asset)
     end
   end
 end

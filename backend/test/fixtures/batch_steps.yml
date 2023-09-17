@@ -3,13 +3,13 @@
 one:
   name: MyString
   description: MyText
-  resource: one
+  asset: one
   batch: one
   formula_step: one
 
 two:
   name: MyString
   description: MyText
-  resource: two
+  asset: two
   batch: two
   formula_step: two

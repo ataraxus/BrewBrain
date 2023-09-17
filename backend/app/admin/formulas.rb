@@ -51,7 +51,7 @@ ActiveAdmin.register Formula do
     end
 
     div do
-      active_admin_form_for [:admin, resource], url: attach_image_formula_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
+      active_admin_form_for [:admin, asset], url: attach_image_formula_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
         f.semantic_errors
         f.inputs "Attach Images" do
           f.input :images, as: :file, input_html: {multiple: true}
@@ -61,7 +61,7 @@ ActiveAdmin.register Formula do
     end
 
     div do
-      active_admin_form_for [:admin, resource], url: attach_attachment_formula_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
+      active_admin_form_for [:admin, asset], url: attach_attachment_formula_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
         f.semantic_errors
         f.inputs "Attach Attachment" do
           f.input :attachments, as: :file, input_html: {multiple: true}
@@ -107,38 +107,38 @@ ActiveAdmin.register Formula do
   end
 
   member_action :attach_image, method: :post do
-    resource.images.attach(params[:formula][:images])
-    if resource.save
-      redirect_to resource_path, notice: "Uploaded Image!"
+    asset.images.attach(params[:formula][:images])
+    if asset.save
+      redirect_to asset_path, notice: "Uploaded Image!"
     else
-      redirect_to resource_path, notice: "Failed to upload!"
+      redirect_to asset_path, notice: "Failed to upload!"
     end
   end
 
   member_action :attach_attachment, method: :post do
-    resource.attachments.attach(params[:formula][:attachments])
-    if resource.save
-      redirect_to resource_path, notice: "Uploaded Attachment!"
+    asset.attachments.attach(params[:formula][:attachments])
+    if asset.save
+      redirect_to asset_path, notice: "Uploaded Attachment!"
     else
-      redirect_to resource_path, notice: "Failed to upload!"
+      redirect_to asset_path, notice: "Failed to upload!"
     end
   end
 
   member_action :delete_attachment do
     ActiveStorage::Attachment.find(params[:attachment_id]).purge_later
-    redirect_to [:admin, resource], notice: "Attachment deleted!"
+    redirect_to [:admin, asset], notice: "Attachment deleted!"
   end
 
   member_action :create_batch, method: :post do
     batch = Batch.new
-    batch.name = resource.name
+    batch.name = asset.name
     batch.state = :planned
     batch.description = params[:amount]
-    resource.formula_steps.each do |formula_step|
+    asset.formula_steps.each do |formula_step|
       step = batch.batch_steps.build
       step.name = formula_step.name
       step.formula_step = formula_step
-      step.resource = Resource.first
+      step.asset = Asset.first
     end
 
     if batch.save
@@ -150,14 +150,14 @@ ActiveAdmin.register Formula do
 
   sidebar "Formula Details", only: [:show, :edit] do
     ul do
-      li link_to "Formula Steps", formula_formula_steps_path(resource)
-      li link_to "Formula Ingredients", formula_formula_ingredients_path(resource)
+      li link_to "Formula Steps", formula_formula_steps_path(asset)
+      li link_to "Formula Ingredients", formula_formula_ingredients_path(asset)
     end
   end
 
   sidebar "Create new Batch", only: [:show] do
-    if resource.state == "production"
-      render "formulas/create_new_batch_form", resource: resource
+    if asset.state == "production"
+      render "formulas/create_new_batch_form", asset: asset
     end
   end
 end

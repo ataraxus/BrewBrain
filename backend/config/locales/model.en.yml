@@ -5,19 +5,19 @@ en:
     description: Description
   activerecord:
     models:
-      batch_step: 
+      batch_step:
         one: Batch Step
         other: Batch Steps
-      batch: 
+      batch:
         one: Batch
         other: Batches
-      comment: 
+      comment:
         one: Comment
         other: Comments
-      formula_category: 
+      formula_category:
         one: Formula Category
         other: Formula Categories
-      formula_ingredient: 
+      formula_ingredient:
         one: Formula Ingredient
         other: Formula Ingredients
       formula_step:
@@ -29,9 +29,9 @@ en:
       ingredient:
         one: Ingredient
         other: Ingredients
-      resource:
-        one: Resource
-        other: Resources
+      asset:
+        one: Asset
+        other: Assets
       user:
         one: User
         other: Users

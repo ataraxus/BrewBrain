@@ -1,6 +1,6 @@
-class CreateResources < ActiveRecord::Migration[7.0]
+class CreateAssets < ActiveRecord::Migration[7.0]
   def change
-    create_table :resources do |t|
+    create_table :assets do |t|
       t.string :name
       t.integer :state
       t.text :description
