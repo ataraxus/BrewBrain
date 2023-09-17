@@ -14,14 +14,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_142323) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
-    t.string "asset_type"
-    t.integer "asset_id"
+    t.string "material_type"
+    t.integer "material_id"
     t.string "author_type"
     t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["asset_type", "asset_id"], name: "index_active_admin_comments_on_asset"
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
+    t.index ["material_type", "material_id"], name: "index_active_admin_comments_on_material"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
   end
 
@@ -53,30 +53,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_142323) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "assets", force: :cascade do |t|
-    t.string "name"
-    t.integer "state"
-    t.text "description"
-    t.string "lot_number"
-    t.decimal "amount_in_kg", precision: 7, scale: 3
-    t.integer "ingredient_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ingredient_id"], name: "index_assets_on_ingredient_id"
-  end
-
   create_table "batch_steps", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.integer "step_number"
     t.integer "formula_step_id", null: false
-    t.integer "asset_id", null: false
+    t.integer "material_id", null: false
     t.integer "batch_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["asset_id"], name: "index_batch_steps_on_asset_id"
     t.index ["batch_id"], name: "index_batch_steps_on_batch_id"
     t.index ["formula_step_id"], name: "index_batch_steps_on_formula_step_id"
+    t.index ["material_id"], name: "index_batch_steps_on_material_id"
   end
 
   create_table "batches", force: :cascade do |t|
@@ -146,6 +134,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_142323) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "materials", force: :cascade do |t|
+    t.string "name"
+    t.integer "state"
+    t.text "description"
+    t.string "lot_number"
+    t.decimal "amount_in_kg", precision: 7, scale: 3
+    t.integer "ingredient_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_materials_on_ingredient_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -164,13 +164,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_142323) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "assets", "ingredients"
-  add_foreign_key "batch_steps", "assets"
   add_foreign_key "batch_steps", "batches"
   add_foreign_key "batch_steps", "formula_steps"
+  add_foreign_key "batch_steps", "materials"
   add_foreign_key "comments", "users"
   add_foreign_key "formula_ingredients", "formulas"
   add_foreign_key "formula_ingredients", "ingredients"
   add_foreign_key "formula_steps", "formulas"
   add_foreign_key "formulas", "formula_categories"
+  add_foreign_key "materials", "ingredients"
 end

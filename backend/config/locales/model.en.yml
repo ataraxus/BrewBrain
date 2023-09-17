@@ -29,9 +29,9 @@ en:
       ingredient:
         one: Ingredient
         other: Ingredients
-      asset:
-        one: Asset
-        other: Assets
+      material:
+        one: Material
+        other: Materials
       user:
         one: User
         other: Users

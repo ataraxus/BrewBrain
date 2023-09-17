@@ -17,7 +17,7 @@ class BatchStepsTest < ApplicationSystemTestCase
     fill_in "Batch", with: @batch_step.batch_id
     fill_in "Description", with: @batch_step.description
     fill_in "Name", with: @batch_step.name
-    fill_in "Asset", with: @batch_step.asset_id
+    fill_in "Material", with: @batch_step.material_id
     click_on "Create Batch step"
 
     assert_text "Batch step was successfully created"
@@ -31,7 +31,7 @@ class BatchStepsTest < ApplicationSystemTestCase
     fill_in "Batch", with: @batch_step.batch_id
     fill_in "Description", with: @batch_step.description
     fill_in "Name", with: @batch_step.name
-    fill_in "ra ", with: @batch_step.asset_id
+    fill_in "ra ", with: @batch_step.material_id
     click_on "Update Batch step"
 
     assert_text "Batch step was successfully updated"

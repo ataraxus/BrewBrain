@@ -17,7 +17,7 @@ class BatchStepsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create batch_step" do
     assert_difference("BatchStep.count") do
-      post batch_steps_url, params: {batch_step: {batch_id: @batch_step.batch_id, description: @batch_step.description, name: @batch_step.name, asset_id: @batch_step.asset_id}}
+      post batch_steps_url, params: {batch_step: {batch_id: @batch_step.batch_id, description: @batch_step.description, name: @batch_step.name, material_id: @batch_step.material_id}}
     end
 
     assert_redirected_to batch_step_url(BatchStep.last)
@@ -34,7 +34,7 @@ class BatchStepsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update batch_step" do
-    patch batch_step_url(@batch_step), params: {batch_step: {batch_id: @batch_step.batch_id, description: @batch_step.description, name: @batch_step.name, asset_id: @batch_step.asset_id}}
+    patch batch_step_url(@batch_step), params: {batch_step: {batch_id: @batch_step.batch_id, description: @batch_step.description, name: @batch_step.name, material_id: @batch_step.material_id}}
     assert_redirected_to batch_step_url(@batch_step)
   end
 

@@ -1,48 +1,48 @@
 require "test_helper"
 
-class AssetsControllerTest < ActionDispatch::IntegrationTest
+class MaterialsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @asset = assets(:one)
+    @material = materials(:one)
   end
 
   test "should get index" do
-    get assets_url
+    get materials_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_asset_url
+    get new_material_url
     assert_response :success
   end
 
-  test "should create asset" do
-    assert_difference("Asset.count") do
-      post assets_url, params: {asset: {amount_in_kg: @asset.amount_in_kg, description: @asset.description, ingredient_id: @asset.ingredient_id, lot_number: @asset.lot_number, name: @asset.name, state: @asset.state}}
+  test "should create material" do
+    assert_difference("Material.count") do
+      post materials_url, params: {material: {amount_in_kg: @material.amount_in_kg, description: @material.description, ingredient_id: @material.ingredient_id, lot_number: @material.lot_number, name: @material.name, state: @material.state}}
     end
 
-    assert_redirected_to asset_url(Asset.last)
+    assert_redirected_to material_url(Material.last)
   end
 
-  test "should show asset" do
-    get asset_url(@asset)
+  test "should show material" do
+    get material_url(@material)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_asset_url(@asset)
+    get edit_material_url(@material)
     assert_response :success
   end
 
-  test "should update asset" do
-    patch asset_url(@asset), params: {asset: {amount_in_kg: @asset.amount_in_kg, description: @asset.description, ingredient_id: @asset.ingredient_id, lot_number: @asset.lot_number, name: @asset.name, state: @asset.state}}
-    assert_redirected_to asset_url(@asset)
+  test "should update material" do
+    patch material_url(@material), params: {material: {amount_in_kg: @material.amount_in_kg, description: @material.description, ingredient_id: @material.ingredient_id, lot_number: @material.lot_number, name: @material.name, state: @material.state}}
+    assert_redirected_to material_url(@material)
   end
 
-  test "should destroy asset" do
-    assert_difference("Asset.count", -1) do
-      delete asset_url(@asset)
+  test "should destroy material" do
+    assert_difference("Material.count", -1) do
+      delete material_url(@material)
     end
 
-    assert_redirected_to assets_url
+    assert_redirected_to materials_url
   end
 end

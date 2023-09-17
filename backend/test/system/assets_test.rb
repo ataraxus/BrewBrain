@@ -1,51 +1,51 @@
 require "application_system_test_case"
 
-class AssetsTest < ApplicationSystemTestCase
+class MaterialsTest < ApplicationSystemTestCase
   setup do
-    @asset = assets(:one)
+    @material = materials(:one)
   end
 
   test "visiting the index" do
-    visit assets_url
-    assert_selector "h1", text: "Assets"
+    visit materials_url
+    assert_selector "h1", text: "Materials"
   end
 
-  test "should create asset" do
-    visit assets_url
-    click_on "New asset"
+  test "should create material" do
+    visit materials_url
+    click_on "New material"
 
-    fill_in "Amount in kg", with: @asset.amount_in_kg
-    fill_in "Description", with: @asset.description
-    fill_in "Ingredient", with: @asset.ingredient_id
-    fill_in "Lot number", with: @asset.lot_number
-    fill_in "Name", with: @asset.name
-    fill_in "State", with: @asset.state
-    click_on "Create Asset"
+    fill_in "Amount in kg", with: @material.amount_in_kg
+    fill_in "Description", with: @material.description
+    fill_in "Ingredient", with: @material.ingredient_id
+    fill_in "Lot number", with: @material.lot_number
+    fill_in "Name", with: @material.name
+    fill_in "State", with: @material.state
+    click_on "Create Material"
 
-    assert_text "Asset was successfully created"
+    assert_text "Material was successfully created"
     click_on "Back"
   end
 
-  test "should update Asset" do
-    visit asset_url(@asset)
-    click_on "Edit this asset", match: :first
+  test "should update Material" do
+    visit material_url(@material)
+    click_on "Edit this material", match: :first
 
-    fill_in "Amount in kg", with: @asset.amount_in_kg
-    fill_in "Description", with: @asset.description
-    fill_in "Ingredient", with: @asset.ingredient_id
-    fill_in "Lot number", with: @asset.lot_number
-    fill_in "Name", with: @asset.name
-    fill_in "State", with: @asset.state
-    click_on "Update Asset"
+    fill_in "Amount in kg", with: @material.amount_in_kg
+    fill_in "Description", with: @material.description
+    fill_in "Ingredient", with: @material.ingredient_id
+    fill_in "Lot number", with: @material.lot_number
+    fill_in "Name", with: @material.name
+    fill_in "State", with: @material.state
+    click_on "Update Material"
 
-    assert_text "Asset was successfully updated"
+    assert_text "Material was successfully updated"
     click_on "Back"
   end
 
-  test "should destroy Asset" do
-    visit asset_url(@asset)
-    click_on "Destroy this asset", match: :first
+  test "should destroy Material" do
+    visit material_url(@material)
+    click_on "Destroy this material", match: :first
 
-    assert_text "Asset was successfully destroyed"
+    assert_text "Material was successfully destroyed"
   end
 end

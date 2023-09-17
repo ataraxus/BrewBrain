@@ -1,4 +1,4 @@
-ActiveAdmin.register Asset do
+ActiveAdmin.register Material do
   menu priority: 4
 
   filter :name
@@ -24,12 +24,12 @@ ActiveAdmin.register Asset do
 
       row :images do
         div do
-          asset.images.each do |img|
+          material.images.each do |img|
             div do
               image_tag url_for(img), size: "200x200"
             end
             div do
-              link_to "Delete", delete_attachment_asset_path(attachment_id: img.id), data: {confirm: "Are you sure?"}
+              link_to "Delete", delete_attachment_material_path(attachment_id: img.id), data: {confirm: "Are you sure?"}
             end
           end
         end
@@ -37,13 +37,13 @@ ActiveAdmin.register Asset do
 
       row :attachments do
         div do
-          asset.attachments.each do |attachment|
+          material.attachments.each do |attachment|
             div do
               span do
                 link_to attachment.filename, url_for(attachment)
               end
               span do
-                link_to "Delete", delete_attachment_asset_path(attachment_id: attachment.id), data: {confirm: "Are you sure?"}
+                link_to "Delete", delete_attachment_material_path(attachment_id: attachment.id), data: {confirm: "Are you sure?"}
               end
             end
           end
@@ -52,7 +52,7 @@ ActiveAdmin.register Asset do
     end
 
     div do
-      active_admin_form_for [:admin, asset], url: attach_image_asset_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
+      active_admin_form_for [:admin, material], url: attach_image_material_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
         f.semantic_errors
         f.inputs "Attach Images" do
           f.input :images, as: :file, input_html: {multiple: true}
@@ -62,7 +62,7 @@ ActiveAdmin.register Asset do
     end
 
     div do
-      active_admin_form_for [:admin, asset], url: attach_attachment_asset_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
+      active_admin_form_for [:admin, material], url: attach_attachment_material_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
         f.semantic_errors
         f.inputs "Attach Attachment" do
           f.input :attachments, as: :file, input_html: {multiple: true}
@@ -87,25 +87,25 @@ ActiveAdmin.register Asset do
   end
 
   member_action :attach_image, method: :post do
-    asset.images.attach(params[:asset][:images])
-    if asset.save
-      redirect_to asset_path, notice: "Uploaded Image!"
+    material.images.attach(params[:material][:images])
+    if material.save
+      redirect_to material_path, notice: "Uploaded Image!"
     else
-      redirect_to asset_path, notice: "Failed to upload!"
+      redirect_to material_path, notice: "Failed to upload!"
     end
   end
 
   member_action :attach_attachment, method: :post do
-    asset.attachments.attach(params[:asset][:attachments])
-    if asset.save
-      redirect_to asset_path, notice: "Uploaded Attachment!"
+    material.attachments.attach(params[:material][:attachments])
+    if material.save
+      redirect_to material_path, notice: "Uploaded Attachment!"
     else
-      redirect_to asset_path, notice: "Failed to upload!"
+      redirect_to material_path, notice: "Failed to upload!"
     end
   end
 
   member_action :delete_attachment do
     ActiveStorage::Attachment.find(params[:attachment_id]).purge_later
-    redirect_to [:admin, asset], notice: "Attachment deleted!"
+    redirect_to [:admin, material], notice: "Attachment deleted!"
   end
 end

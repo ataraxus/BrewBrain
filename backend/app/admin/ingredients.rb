@@ -44,7 +44,7 @@ ActiveAdmin.register Ingredient do
     end
 
     div do
-      active_admin_form_for [:admin, asset], url: attach_image_ingredient_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
+      active_admin_form_for [:admin, material], url: attach_image_ingredient_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
         f.semantic_errors
         f.inputs "Attach Images" do
           f.input :images, as: :file, input_html: {multiple: true}
@@ -54,7 +54,7 @@ ActiveAdmin.register Ingredient do
     end
 
     div do
-      active_admin_form_for [:admin, asset], url: attach_attachment_ingredient_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
+      active_admin_form_for [:admin, material], url: attach_attachment_ingredient_path, html: {multipart: true}, method: :post, builder: ActiveAdmin::FormBuilder do |f|
         f.semantic_errors
         f.inputs "Attach Attachment" do
           f.input :attachments, as: :file, input_html: {multiple: true}
@@ -77,25 +77,25 @@ ActiveAdmin.register Ingredient do
   end
 
   member_action :attach_image, method: :post do
-    asset.images.attach(params[:ingredient][:images])
-    if asset.save
-      redirect_to asset_path, notice: "Uploaded Image!"
+    material.images.attach(params[:ingredient][:images])
+    if material.save
+      redirect_to material_path, notice: "Uploaded Image!"
     else
-      redirect_to asset_path, notice: "Failed to upload!"
+      redirect_to material_path, notice: "Failed to upload!"
     end
   end
 
   member_action :attach_attachment, method: :post do
-    asset.attachments.attach(params[:ingredient][:attachments])
-    if asset.save
-      redirect_to asset_path, notice: "Uploaded Attachment!"
+    material.attachments.attach(params[:ingredient][:attachments])
+    if material.save
+      redirect_to material_path, notice: "Uploaded Attachment!"
     else
-      redirect_to asset_path, notice: "Failed to upload!"
+      redirect_to material_path, notice: "Failed to upload!"
     end
   end
 
   member_action :delete_attachment do
     ActiveStorage::Attachment.find(params[:attachment_id]).purge_later
-    redirect_to [:admin, asset], notice: "Attachment deleted!"
+    redirect_to [:admin, material], notice: "Attachment deleted!"
   end
 end

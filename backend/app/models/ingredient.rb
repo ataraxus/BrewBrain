@@ -3,7 +3,7 @@ class Ingredient < ApplicationRecord
 
   has_many_attached :images
   has_many_attached :attachments
-  has_many :assets, dependent: :destroy
+  has_many :materials, dependent: :destroy
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "description", "id", "name", "ingredient_type", "updated_at"]

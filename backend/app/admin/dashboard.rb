@@ -10,7 +10,7 @@ ActiveAdmin.register_page "Dashboard" do
           table_for [
             [User, users_path],
             [Ingredient, ingredients_path],
-            [Asset, assets_path],
+            [Material, materials_path],
             [FormulaCategory, formula_categories_path],
             [Formula, formulas_path],
             [Batch, batches_path]
