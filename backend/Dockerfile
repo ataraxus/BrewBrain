@@ -23,7 +23,7 @@ WORKDIR /usr/src/app
 COPY ./ ./
 
 RUN bundle install
-RUN RAILS_ENV=production bundle exec rails assets:precompile
+RUN bundle exec rails assets:precompile
 
 FROM ruby:3.2.2-slim-bookworm
 
