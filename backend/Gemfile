@@ -28,6 +28,8 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 # Track changes to your models, for auditing or versioning.
 gem 'paper_trail'
+# Theme
+gem 'active_admin_flat_skin'
 
 gem "activeadmin"
 gem 'assignable_values'
