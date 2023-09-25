@@ -14,15 +14,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_142323) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
-    t.string "material_type"
-    t.integer "material_id"
+    t.string "resource_type"
+    t.integer "resource_id"
     t.string "author_type"
     t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
-    t.index ["material_type", "material_id"], name: "index_active_admin_comments_on_material"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
